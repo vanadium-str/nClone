@@ -1,9 +1,10 @@
 import React, {useContext} from 'react';
+import { dateFormat } from '../utils/constants';
 import { nCloneContext } from '../utils/context'
 
 function AddLink() {
 
-    const {setPage, setAddedImg, addedImg, setAddedTitle, addedTitle} = useContext(nCloneContext);
+    const {setPage, setAddedImg, addedImg, setAddedTitle, addedTitle, setCurrentDate} = useContext(nCloneContext);
 
     return(
         <div className='container'>
@@ -22,7 +23,6 @@ function AddLink() {
                 <div className='col-12 d-flex flex-column align-items-center'>
                     <label className='mt-5 mb-2'>Please, attach the photo (supported: .jpg/.jpeg/.png)</label>
                     <input type="file" accept=".jpg, .jpeg, .png" onChange={(event) => {
-                        console.log(event.target.files);
                         setAddedImg(window.URL.createObjectURL(event.target.files[0]));
                     }}/>
                 </div>
@@ -32,11 +32,17 @@ function AddLink() {
                 <div className='d-flex justify-content-center'>
                     <button className='button me-5' onClick={() => {
                         addedTitle !== '' && addedImg !== '' ? setPage('allPosts') : alert('Please, write title and attach image')
+                        if(addedTitle !== '' && addedImg !== ''){
+                            setCurrentDate(dateFormat());
+                            setPage('allPosts');
+                        }else{
+                            alert('Please, write title and attach image');
+                        }
                     }}>
                         Add
                     </button>
                     <button className='button buttonGray' onClick={() => {
-                        confirm('Your data will not be saved. Are you sure?') ? setPage('allPosts') : ''
+                        confirm('Your data will not be saved. Are you sure?') ? setPage('allPosts') : '';
                     }}>
                         Back
                     </button>

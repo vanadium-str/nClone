@@ -1,8 +1,9 @@
 import { useState, useContext } from 'react';
+import { dateFormat } from '../utils/constants';
 import { nCloneContext } from '../utils/context';
 
 function AddComment() {
-    const {setShowModal, username, setUsername,addedComment, setAddedComment} = useContext(nCloneContext);
+    const {setShowModal, setCurrentComDate,addedComment, setAddedComment} = useContext(nCloneContext);
 
   return (
     <div>
@@ -14,7 +15,12 @@ function AddComment() {
       </div>
       <div className='d-flex justify-content-around'>
         <button className='button me-5' onClick={() => {
-            addedComment !== '' ? setShowModal(false) : alert('Please, write a comment')
+            if(addedComment !== ''){
+              setCurrentComDate(dateFormat());
+              setShowModal(false);
+            }else{
+              alert('Please, write a comment');
+            }
         }}>
           Add
         </button>

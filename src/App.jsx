@@ -11,12 +11,17 @@ function App() {
   const [addedTitle, setAddedTitle] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [addedComment, setAddedComment] = useState('');
+  const [showComments, setShowComments] = useState(false);
+  const [currentDate, setCurrentDate] = useState('');
+  const [postId, setPostId] = useState('');
+  const [addedPost, setAddedPost] = useState(false);
 
   return (
     <div className=''>
       <nCloneContext.Provider value = {
         { page, setPage, username, setUsername, addedImg, setAddedImg, addedTitle, setAddedTitle, showModal, setShowModal,
-          addedComment, setAddedComment }
+          addedComment, setAddedComment, showComments, setShowComments, currentDate, setCurrentDate, postId, setPostId,
+          addedPost, setAddedPost }
       }>
         <SwitchPage/>
       </nCloneContext.Provider>

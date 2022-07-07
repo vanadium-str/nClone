@@ -17,7 +17,7 @@ function Comments() {
                 {getRandomInt(1,350)}
                 <FontAwesomeIcon icon={faArrowDown}/>
             </div>
-            <div className='col-11'>
+            <div className='col-6'>
                 <p className='mb-0'>Each nClone link and comment should have an “Add comment” button (next to the comments
                     count). Clicking that button will open a modal with a textarea for inserting the comment text.
                     The modal footer should have “Save”/”Cancel” buttons.</p>
