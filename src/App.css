@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;700&family=IBM+Plex+Sans:ital,wght@0,100;0,300;0,400;0,600;1,600&display=swap');
+
+body{
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 18px;
+}
+
+.logo{
+  font-size: 50px;
+  font-weight: 600;
+  font-style: italic;
+  color: blueviolet;
+  height: 40vH;
+  display: flex;
+  align-items: flex-end;
+}
+.fontSmall{
+  font-size: 14px;
+}
+.inputUsername{
+  width: 200px;
+  border-radius: 6px;
+}
+.button{
+  width: 160px;
+  height: 40px;
+  background: blueviolet;
+  border-radius: 16px;
+  border: #FFFFFF;
+  color: #FFFFFF;
+}
+
+.buttonAddComment{
+  width: 115px;
+  height: 23px;
+  background: rgb(148, 143, 148);
+  border-radius: 6px;
+  border: #FFFFFF;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.colorGray{
+  color: gray;
+}
+.logoSmall{
+  font-size: 30px;
+  font-weight: 600;
+  font-style: italic;
+  color: blueviolet;
+}
+.inputTitle{
+  width: 300px;
+  border-radius: 6px;
+}
+.buttonGray{
+  background-color: gray;
+}
+.close{
+  position: absolute;
+  font-size: 3rem;
+  color: black;
+  cursor: pointer;
+  top: 0;
+  right: 40px;
+}
+.close:hover{
+  opacity: 0.7;
+}
+.modalComment{
+  min-width: 100vh;
+  min-height: 50vh; 
+}
+.cursor{
+  cursor: pointer;
+}
