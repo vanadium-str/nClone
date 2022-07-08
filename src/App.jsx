@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import SwitchPage from './components/SwitchPage';
+import { data } from './utils/constants';
 import { nCloneContext } from './utils/context';
 
 
@@ -14,7 +15,7 @@ function App() {
   const [currentDate, setCurrentDate] = useState('');
   const [postId, setPostId] = useState('');
   const [addedPost, setAddedPost] = useState(false);
-  const [arrayPosts, SetArrayPosts] = useState([]);
+  const [arrayPosts, SetArrayPosts] = useState(data);
 
   return (
     <div className=''>

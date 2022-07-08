@@ -13,73 +13,6 @@ function AllPosts() {
     
     console.log(arrayPosts);
 
-    let posts = {
-        token: "sdH61NyUhz3fsATnoqw0rQ",
-        data: {
-            username: "personNickname",
-            image: "personAvatar",
-            title: "stringWords",
-            amountVotes: "numberInt",
-            date_time: "dateTime|UNIX",
-            comments: [{
-                comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a suscipit augue. Nunc et imperdiet mi. Fusce finibus, sem nec tristique ornare, enim nisi mollis sem, eget viverra mauris nulla vel elit.",
-                author: "username",
-                amountVotes: 25,
-                date_time: "Fri Sep 1 13:46:40 UTC 1972",
-                amountComments: 0
-            },
-            {
-                comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a suscipit augue. Nunc et imperdiet mi. Fusce finibus, sem nec tristique ornare, enim nisi mollis sem, eget viverra mauris nulla vel elit.",
-                author: "username",
-                amountVotes: 25,
-                date_time: "Fri Sep 1 13:46:40 UTC 1972",
-                amountComments: 0
-            },
-            {
-                comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a suscipit augue. Nunc et imperdiet mi. Fusce finibus, sem nec tristique ornare, enim nisi mollis sem, eget viverra mauris nulla vel elit.",
-                author: "username",
-                amountVotes: 25,
-                date_time: "Fri Sep 1 13:46:40 UTC 1972",
-                amountComments: 0
-            },
-            {
-                comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a suscipit augue. Nunc et imperdiet mi. Fusce finibus, sem nec tristique ornare, enim nisi mollis sem, eget viverra mauris nulla vel elit.",
-                author: "username",
-                amountVotes: 25,
-                date_time: "Fri Sep 1 13:46:40 UTC 1972",
-                amountComments: 0
-            },
-            {
-                comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a suscipit augue. Nunc et imperdiet mi. Fusce finibus, sem nec tristique ornare, enim nisi mollis sem, eget viverra mauris nulla vel elit.",
-                author: "username",
-                amountVotes: 25,
-                date_time: "Fri Sep 1 13:46:40 UTC 1972",
-                amountComments: 0
-            }
-        ],
-            _repeat: 10
-          }
-    }
-
-    useEffect(() => {
-        if(arrayPosts.length === 0){
-            fetch('https://app.fakejson.com/q', {
-                method: 'POST',
-                body: JSON.stringify(posts),
-                headers: {
-                  'Content-Type': 'application/json'
-                }
-              })
-            .then(response => response.json())
-            .then(data => {
-                SetArrayPosts(data);
-                console.log(data);
-            }
-            );
-        }
-
-    }, []);
-
   return (
     <div className='container my-2'>
         <div className='row'>
@@ -144,3 +77,68 @@ function AllPosts() {
 }
 
 export default AllPosts;
+
+
+// let posts = {
+    //     token: "2jYWMdVAEke_I3u7rqqbiA",
+    //     data: {
+    //         username: "personNickname",
+    //         image: "personAvatar",
+    //         title: "stringWords",
+    //         amountVotes: "numberInt",
+    //         date_time: "dateTime|UNIX",
+    //         comments: [{
+    //             comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a suscipit augue. Nunc et imperdiet mi. Fusce finibus, sem nec tristique ornare, enim nisi mollis sem, eget viverra mauris nulla vel elit.",
+    //             author: "username",
+    //             amountVotes: 25,
+    //             date_time: "Fri Sep 1 13:46:40 UTC 1972",
+    //             amountComments: 0
+    //         },
+    //         {
+    //             comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a suscipit augue. Nunc et imperdiet mi. Fusce finibus, sem nec tristique ornare, enim nisi mollis sem, eget viverra mauris nulla vel elit.",
+    //             author: "username",
+    //             amountVotes: 25,
+    //             date_time: "Fri Sep 1 13:46:40 UTC 1972",
+    //             amountComments: 0
+    //         },
+    //         {
+    //             comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a suscipit augue. Nunc et imperdiet mi. Fusce finibus, sem nec tristique ornare, enim nisi mollis sem, eget viverra mauris nulla vel elit.",
+    //             author: "username",
+    //             amountVotes: 25,
+    //             date_time: "Fri Sep 1 13:46:40 UTC 1972",
+    //             amountComments: 0
+    //         },
+    //         {
+    //             comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a suscipit augue. Nunc et imperdiet mi. Fusce finibus, sem nec tristique ornare, enim nisi mollis sem, eget viverra mauris nulla vel elit.",
+    //             author: "username",
+    //             amountVotes: 25,
+    //             date_time: "Fri Sep 1 13:46:40 UTC 1972",
+    //             amountComments: 0
+    //         },
+    //         {
+    //             comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a suscipit augue. Nunc et imperdiet mi. Fusce finibus, sem nec tristique ornare, enim nisi mollis sem, eget viverra mauris nulla vel elit.",
+    //             author: "username",
+    //             amountVotes: 25,
+    //             date_time: "Fri Sep 1 13:46:40 UTC 1972",
+    //             amountComments: 0
+    //         }
+    //     ],
+    //         _repeat: 10
+    //       }
+    // }
+
+    // useEffect(() => {
+    //     fetch('https://app.fakejson.com/q', {
+    //             method: 'POST',
+    //             body: JSON.stringify(posts),
+    //             headers: {
+    //               'Content-Type': 'application/json'
+    //             }
+    //           })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             SetArrayPosts(data);
+    //             console.log(data);
+    //         });
+
+    // }, []);
