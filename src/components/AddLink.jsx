@@ -4,7 +4,7 @@ import { nCloneContext } from '../utils/context'
 
 function AddLink() {
 
-    const {setPage, setAddedImg, addedImg, setAddedTitle, addedTitle, setCurrentDate} = useContext(nCloneContext);
+    const {setPage, setAddedImg, addedImg, setAddedTitle, addedTitle, setCurrentDate, arrayPosts, username} = useContext(nCloneContext);
 
     return(
         <div className='container'>
@@ -34,6 +34,13 @@ function AddLink() {
                         addedTitle !== '' && addedImg !== '' ? setPage('allPosts') : alert('Please, write title and attach image')
                         if(addedTitle !== '' && addedImg !== ''){
                             setCurrentDate(dateFormat());
+                            arrayPosts.unshift({
+                                amountVotes: 0,
+                                comments: [],
+                                image: addedImg,
+                                title: addedTitle,
+                                username: username
+                            })
                             setPage('allPosts');
                         }else{
                             alert('Please, write title and attach image');

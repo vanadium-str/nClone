@@ -1,15 +1,13 @@
 import React, {useContext} from 'react';
 import { nCloneContext } from '../utils/context'
-import { getRandomInt } from '../utils/constants';
 import Comments from './Comments';
-import AddComment from './AddComment';
-import Modal from 'react-modal';
 import AddCommentButton from './AddCommentButton';
 import Votes from './Votes';
+import ModalWindow from './ModalWindow';
 
 function CurrentPost() {
 
-    const {setPage, addedPost, addedImg, username, addedTitle, showModal, setShowModal, currentDate} = useContext(nCloneContext);
+    const {setPage, addedPost, arrayPosts, setShowModal, currentDate, postId} = useContext(nCloneContext);
 
     const hideModal = () => {
         setShowModal(false);
@@ -39,49 +37,35 @@ function CurrentPost() {
                 </div>
 
                 <div className='col-1'>
-                    <Votes count={addedPost ? 0 : ''}/>
+                    <Votes count={arrayPosts[postId].amountVotes}/>
                 </div>
                 <div className='col-10'>
                     <p className='fontSmall m-0 colorGray'>
-                            submitted on {addedPost ? currentDate : ''} by <b>{addedPost ? username : ''}</b>
+                            submitted on {addedPost ? currentDate : ''} by <b>{arrayPosts[postId].username}</b>
                     </p>
                     <h4 className='m-0 cursor' onClick={() => setPage('currentPost')}>
-                            Full moon rising over Mount Hood
+                            {arrayPosts[postId].title}
                     </h4>
                     <div className='d-flex justify-content-start align-items-center my-3'>
-                        <img width='500' src={addedPost ? addedImg : ''}/>
+                        <img width='500' src={arrayPosts[postId].image}/>
                     </div>
                     
                     <div className='d-flex align-items-center colorGray commentWidth'>
                         <p className='fw-bold fontSmall mb-0 me-5' onClick={() => 
                             showComments ? setShowComments(false) : setShowComments(true)
                         }>
-                            {getRandomInt(1,50)} comments
+                            {arrayPosts[postId].comments} comments
                         </p>
                         <AddCommentButton/>
                     </div>
                 </div>
 
 
-
-
                 <div className='offset-2 my-2'>
                     <Comments/>
                 </div>
 
-                <Modal isOpen={showModal} closeTimeoutMS={150} onRequestClose={hideModal} style={customStyles}>
-                        <AddComment/>
-                        <span className='close' onClick={() => {                        
-                            if(confirm('Your comment will not be saved. Are you sure?')){
-                                setShowModal(false);
-                                document.body.style.overflow = 'unset';
-                            }
-                        }}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15">
-                                <path d="M14 .7l-.7-.7L7 6.3.7 0 0 .7 6.3 7 0 13.3l.7.7L7 7.7l6.3 6.3.7-.7L7.7 7z"/>
-                            </svg>
-                        </span>
-                </Modal>
+                <ModalWindow/>
             </div>
         </div>
     )

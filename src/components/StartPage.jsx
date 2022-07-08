@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { nCloneContext } from '../utils/context';
 
 function StartPage() {

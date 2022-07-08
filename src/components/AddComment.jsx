@@ -3,7 +3,7 @@ import { dateFormat } from '../utils/constants';
 import { nCloneContext } from '../utils/context';
 
 function AddComment() {
-    const {setShowModal, setCurrentComDate,addedComment, setAddedComment} = useContext(nCloneContext);
+    const {setShowModal, arrayPosts ,addedComment, setAddedComment, username, setCurrentDate, postId} = useContext(nCloneContext);
 
   return (
     <div>
@@ -16,7 +16,14 @@ function AddComment() {
       <div className='d-flex justify-content-around'>
         <button className='button me-5' onClick={() => {
             if(addedComment !== ''){
-              setCurrentComDate(dateFormat());
+              console.log(postId);
+              setCurrentDate(dateFormat());
+              arrayPosts[postId].comments.unshift({
+                amountVotes: 0,
+                amountComments: 0,
+                comment: addedComment,
+                author: username
+            })
               setShowModal(false);
             }else{
               alert('Please, write a comment');

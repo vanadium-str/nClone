@@ -83,3 +83,12 @@ body{
 .commentWidth{
   min-width: 90px;
 }
+.slowDown{
+  overflow: auto;
+  transition: max-height 0.7s ease-out;
+  height: auto;
+  max-height: 600px;
+}
+.slowDown.collapsed {
+  max-height:0;
+}
