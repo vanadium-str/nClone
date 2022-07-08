@@ -43,7 +43,7 @@ function CurrentPost() {
                     <p className='fontSmall m-0 colorGray'>
                             submitted on {addedPost ? currentDate : ''} by <b>{arrayPosts[postId].username}</b>
                     </p>
-                    <h4 className='m-0 cursor' onClick={() => setPage('currentPost')}>
+                    <h4 className='m-0'>
                             {arrayPosts[postId].title}
                     </h4>
                     <div className='d-flex justify-content-start align-items-center my-3'>
@@ -54,9 +54,9 @@ function CurrentPost() {
                         <p className='fw-bold fontSmall mb-0 me-5' onClick={() => 
                             showComments ? setShowComments(false) : setShowComments(true)
                         }>
-                            {arrayPosts[postId].comments} comments
+                            {arrayPosts[postId].comments.length} comments
                         </p>
-                        <AddCommentButton/>
+                        <AddCommentButton id={postId}/>
                     </div>
                 </div>
 
