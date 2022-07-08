@@ -31,7 +31,6 @@ function AddLink() {
                 </div>
                 <div className='d-flex justify-content-center'>
                     <button className='button me-5' onClick={() => {
-                        addedTitle !== '' && addedImg !== '' ? setPage('allPosts') : alert('Please, write title and attach image')
                         if(addedTitle !== '' && addedImg !== ''){
                             setCurrentDate(dateFormat());
                             arrayPosts.unshift({

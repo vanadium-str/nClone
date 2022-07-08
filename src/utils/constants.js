@@ -14,7 +14,14 @@ export const dateFormat = () => {
 
 export const dateArray = (date) => {
     let arrDate = date.split(' ');
-    let arrTime = arrDate[3].split(':');
-    let newDate = `${arrDate[1]} ${arrDate[2]}, ${arrDate[5]} ${arrTime[0]}:${arrTime[1]}`;
+    let newDate;
+    if(arrDate[2] === ''){
+        let arrTime = arrDate[4].split(':');
+        newDate = `${arrDate[1]} ${arrDate[3]}, ${arrDate[6]} ${arrTime[0]}:${arrTime[1]}`; 
+    }else{
+        let arrTime = arrDate[3].split(':');
+        newDate = `${arrDate[1]} ${arrDate[2]}, ${arrDate[5]} ${arrTime[0]}:${arrTime[1]}`;
+    }
+
     return newDate;
 }

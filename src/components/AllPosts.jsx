@@ -7,7 +7,7 @@ import ModalWindow from './ModalWindow';
 import { dateArray } from '../utils/constants';
 
 function AllPosts() {
-    const {setPage, currentDate, setPostId, arrayPosts, SetArrayPosts} = useContext(nCloneContext);
+    const {setPage, currentDate, setPostId, arrayPosts, SetArrayPosts, setAddedImg, setAddedTitle, username} = useContext(nCloneContext);
 
     const [showComments, setShowComments] = useState(-1);
     
@@ -25,35 +25,35 @@ function AllPosts() {
                 comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a suscipit augue. Nunc et imperdiet mi. Fusce finibus, sem nec tristique ornare, enim nisi mollis sem, eget viverra mauris nulla vel elit.",
                 author: "username",
                 amountVotes: 25,
-                date_time: "Fri Sep  1 13:46:40 UTC 1972",
+                date_time: "Fri Sep 1 13:46:40 UTC 1972",
                 amountComments: 0
             },
             {
                 comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a suscipit augue. Nunc et imperdiet mi. Fusce finibus, sem nec tristique ornare, enim nisi mollis sem, eget viverra mauris nulla vel elit.",
                 author: "username",
                 amountVotes: 25,
-                date_time: "Fri Sep  1 13:46:40 UTC 1972",
+                date_time: "Fri Sep 1 13:46:40 UTC 1972",
                 amountComments: 0
             },
             {
                 comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a suscipit augue. Nunc et imperdiet mi. Fusce finibus, sem nec tristique ornare, enim nisi mollis sem, eget viverra mauris nulla vel elit.",
                 author: "username",
                 amountVotes: 25,
-                date_time: "Fri Sep  1 13:46:40 UTC 1972",
+                date_time: "Fri Sep 1 13:46:40 UTC 1972",
                 amountComments: 0
             },
             {
                 comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a suscipit augue. Nunc et imperdiet mi. Fusce finibus, sem nec tristique ornare, enim nisi mollis sem, eget viverra mauris nulla vel elit.",
                 author: "username",
                 amountVotes: 25,
-                date_time: "Fri Sep  1 13:46:40 UTC 1972",
+                date_time: "Fri Sep 1 13:46:40 UTC 1972",
                 amountComments: 0
             },
             {
                 comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a suscipit augue. Nunc et imperdiet mi. Fusce finibus, sem nec tristique ornare, enim nisi mollis sem, eget viverra mauris nulla vel elit.",
                 author: "username",
                 amountVotes: 25,
-                date_time: "Fri Sep  1 13:46:40 UTC 1972",
+                date_time: "Fri Sep 1 13:46:40 UTC 1972",
                 amountComments: 0
             }
         ],
@@ -87,7 +87,11 @@ function AllPosts() {
                 <p className='logoSmall'>
                     nClone App
                 </p>
-                <button className='button' onClick={() => setPage('addLink')}>
+                <button className='button' onClick={() =>{
+                    setPage('addLink');
+                    setAddedImg('');
+                    setAddedTitle('');
+                    }}>
                     Add link
                 </button>
             </div>
@@ -108,7 +112,7 @@ function AllPosts() {
                                 {item.title}
                             </h4>
                             <p className='fontSmall m-0 colorGray'>
-                                submitted on {currentDate ? currentDate : dateArray(item.date_time)} by <b>{item.username}</b>
+                                submitted on {item.username === username ? currentDate : dateArray(item.date_time)} by <b>{item.username}</b>
                             </p>
                             <div className='d-flex align-items-center colorGray commentWidth'>
                                 <p className='fw-bold fontSmall mb-0 me-5' onClick={() => {
