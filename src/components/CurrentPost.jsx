@@ -7,22 +7,7 @@ import ModalWindow from './ModalWindow';
 
 function CurrentPost() {
 
-    const {setPage, addedPost, arrayPosts, setShowModal, currentDate, postId} = useContext(nCloneContext);
-
-    const hideModal = () => {
-        setShowModal(false);
-    };
-
-    const customStyles = {
-        content: {
-            top: '50%',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -50%)',
-        },
-    };
+    const {setPage, addedPost, arrayPosts, currentDate, postId} = useContext(nCloneContext);
 
     return(
         <div className='container my-2'>

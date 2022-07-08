@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import { nCloneContext } from '../utils/context';
 import Comments from './Comments';
 import AddCommentButton from './AddCommentButton';
@@ -7,11 +7,9 @@ import ModalWindow from './ModalWindow';
 import { dateArray } from '../utils/constants';
 
 function AllPosts() {
-    const {setPage, currentDate, setPostId, arrayPosts, SetArrayPosts, setAddedImg, setAddedTitle, username} = useContext(nCloneContext);
+    const {setPage, currentDate, setPostId, arrayPosts, setAddedImg, setAddedTitle, username} = useContext(nCloneContext);
 
     const [showComments, setShowComments] = useState(-1);
-    
-    console.log(arrayPosts);
 
   return (
     <div className='container my-2'>
@@ -63,8 +61,8 @@ function AllPosts() {
                         {showComments === key ? 
                             <div className='offset-2 my-2 commentsBlock slowDown'>
                                  <Comments id={key}/>
-                             </div>
-                            :   <div className='slowDown collapsed'></div>
+                            </div>
+                            : <div className='slowDown collapsed'></div>
                         }
                     </div>
                 )
