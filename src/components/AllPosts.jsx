@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { nCloneContext } from '../utils/context';
 import Comments from './Comments';
 import AddCommentButton from './AddCommentButton';
@@ -7,29 +7,40 @@ import ModalWindow from './ModalWindow';
 import { dateArray } from '../utils/constants';
 
 function AllPosts() {
-    const {setPage, currentDate, setPostId, arrayPosts, setAddedImg, setAddedTitle, username} = useContext(nCloneContext);
+
+    const {setPage, currentDate, setPostId, arrayPosts, setAddedImg, setAddedTitle, username, setArrayPosts} = useContext(nCloneContext);
 
     const [showComments, setShowComments] = useState(-1);
 
-  return (
-    <div className='container my-2'>
-        <div className='row'>
-            <div className='col-12 my-3 d-flex justify-content-between align-items-center'>
-                <p className='logoSmall'>
-                    nClone App
-                </p>
-                <button className='button' onClick={() =>{
-                    setPage('addLink');
-                    setAddedImg('');
-                    setAddedTitle('');
-                    }}>
-                    Add link
-                </button>
-            </div>
+    // useEffect(() => {
+    //     fetch('https://my-json-server.typicode.com/vanadium-str/fakeJSON/data')
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             setArrayPosts(data);
+    //         }
+    //     );
+    // }, []);
+
+    return (
+        <div className='container my-2'>
+            <div className='row'>
+                <div className='col-12 my-3 d-flex justify-content-between align-items-center'>
+                    <p className='logoSmall' data-cy='logo'>
+                        nClone App
+                    </p>
+                    <button className='button' data-cy='button-add-link' onClick={() =>{
+                        setPage('addLink');
+                        setAddedImg('');
+                        setAddedTitle('');
+                        }}>
+                        Add link
+                    </button>
+                </div>
 
             {arrayPosts.map((item, key) => {
                 return(
-                    <div className='row my-2'>
+                    <div className='row my-2' data-cy='title-row'>
                         <Votes count={item.amountVotes}/>
 
                         <div className='col-1 d-flex justify-content-center align-items-center'>
@@ -75,68 +86,3 @@ function AllPosts() {
 }
 
 export default AllPosts;
-
-
-// let posts = {
-    //     token: "2jYWMdVAEke_I3u7rqqbiA",
-    //     data: {
-    //         username: "personNickname",
-    //         image: "personAvatar",
-    //         title: "stringWords",
-    //         amountVotes: "numberInt",
-    //         date_time: "dateTime|UNIX",
-    //         comments: [{
-    //             comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a suscipit augue. Nunc et imperdiet mi. Fusce finibus, sem nec tristique ornare, enim nisi mollis sem, eget viverra mauris nulla vel elit.",
-    //             author: "username",
-    //             amountVotes: 25,
-    //             date_time: "Fri Sep 1 13:46:40 UTC 1972",
-    //             amountComments: 0
-    //         },
-    //         {
-    //             comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a suscipit augue. Nunc et imperdiet mi. Fusce finibus, sem nec tristique ornare, enim nisi mollis sem, eget viverra mauris nulla vel elit.",
-    //             author: "username",
-    //             amountVotes: 25,
-    //             date_time: "Fri Sep 1 13:46:40 UTC 1972",
-    //             amountComments: 0
-    //         },
-    //         {
-    //             comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a suscipit augue. Nunc et imperdiet mi. Fusce finibus, sem nec tristique ornare, enim nisi mollis sem, eget viverra mauris nulla vel elit.",
-    //             author: "username",
-    //             amountVotes: 25,
-    //             date_time: "Fri Sep 1 13:46:40 UTC 1972",
-    //             amountComments: 0
-    //         },
-    //         {
-    //             comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a suscipit augue. Nunc et imperdiet mi. Fusce finibus, sem nec tristique ornare, enim nisi mollis sem, eget viverra mauris nulla vel elit.",
-    //             author: "username",
-    //             amountVotes: 25,
-    //             date_time: "Fri Sep 1 13:46:40 UTC 1972",
-    //             amountComments: 0
-    //         },
-    //         {
-    //             comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a suscipit augue. Nunc et imperdiet mi. Fusce finibus, sem nec tristique ornare, enim nisi mollis sem, eget viverra mauris nulla vel elit.",
-    //             author: "username",
-    //             amountVotes: 25,
-    //             date_time: "Fri Sep 1 13:46:40 UTC 1972",
-    //             amountComments: 0
-    //         }
-    //     ],
-    //         _repeat: 10
-    //       }
-    // }
-
-    // useEffect(() => {
-    //     fetch('https://app.fakejson.com/q', {
-    //             method: 'POST',
-    //             body: JSON.stringify(posts),
-    //             headers: {
-    //               'Content-Type': 'application/json'
-    //             }
-    //           })
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             SetArrayPosts(data);
-    //             console.log(data);
-    //         });
-
-    // }, []);
