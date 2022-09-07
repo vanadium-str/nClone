@@ -16,7 +16,7 @@ function CurrentPost() {
                     <p className='logoSmall'>
                         nClone App
                     </p>
-                    <button className='button buttonGray' onClick={() => setPage('allPosts')}>
+                    <button className='button buttonGray' data-cy='back-from-current-title' onClick={() => setPage('allPosts')}>
                         Back
                     </button>
                 </div>
@@ -28,7 +28,7 @@ function CurrentPost() {
                     <p className='fontSmall m-0 colorGray'>
                             submitted on {addedPost ? currentDate : ''} by <b>{arrayPosts[postId].username}</b>
                     </p>
-                    <h4 className='m-0'>
+                    <h4 className='m-0' data-cy='current-title-post'>
                             {arrayPosts[postId].title}
                     </h4>
                     <div className='d-flex justify-content-start align-items-center my-3'>

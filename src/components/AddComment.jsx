@@ -8,15 +8,15 @@ function AddComment() {
   return (
     <div>
       <div className='d-flex flex-column align-items-center justify-content-center modalComment'>
-          <label className='my-3'>
+          <label className='my-3' data-cy='write-comment'>
             Please, write your comment:
           </label>
-          <textarea placeholder='your comment' rows='4' cols='50' onChange={(event) => {
+          <textarea placeholder='your comment' rows='4' cols='50' data-cy='add-comment-textarea' onChange={(event) => {
             setAddedComment(event.target.value)
           }}/>
       </div>
       <div className='d-flex justify-content-around'>
-        <button className='button me-5' onClick={() => {
+        <button className='button me-5' data-cy='add-comment-button' onClick={() => {
             if(addedComment !== ''){
               setCurrentDate(dateArray(''));
               arrayPosts[postId].comments.unshift({
@@ -32,7 +32,7 @@ function AddComment() {
         }}>
           Add
         </button>
-        <button className='button buttonGray' onClick={() => {
+        <button className='button buttonGray' data-cy='back-from-comment-button' onClick={() => {
             confirm('Your comment will not be saved. Are you sure?') ? setShowModal(false) : ''
         }}>
           Cancel

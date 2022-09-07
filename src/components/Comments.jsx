@@ -19,10 +19,10 @@ function Comments() {
                             <Votes count={item.amountVotes}/>
 
                             <div className='col-6'>
-                                <p className='mb-0'>
+                                <p className='mb-0' data-cy='comment-title'>
                                     {item.comment}
                                 </p>
-                                <p className='fontSmall mb-0 colorGray'>
+                                <p className='fontSmall mb-0 colorGray' data-cy='comment-username'>
                                     submitted on {arrayPosts[postId].username === username ? currentDate : dateArray(item.date_time)} by <b>{item.author}</b>
                                 </p>
                                 <div className='d-flex align-items-center colorGray'>

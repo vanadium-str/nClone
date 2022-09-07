@@ -6,7 +6,7 @@ function AddCommentButton({id}) {
 const {setShowModal, setPostId} = useContext(nCloneContext);
 
   return (
-    <button className='fontSmall buttonAddComment' onClick={() => {
+    <button className='fontSmall buttonAddComment' data-cy='add-comment' onClick={() => {
         setPostId(id);
         setShowModal(true);
     }}>
