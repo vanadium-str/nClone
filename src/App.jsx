@@ -6,7 +6,6 @@ import { nCloneContext } from './utils/context';
 
 
 function App() {
-  const [page, setPage] = useState('');
   const [username, setUsername] = useState('');
   const [addedImg, setAddedImg] = useState('');
   const [addedTitle, setAddedTitle] = useState('');
@@ -20,7 +19,7 @@ function App() {
   return (
     <div className=''>
       <nCloneContext.Provider value = {
-        { page, setPage, username, setUsername, addedImg, setAddedImg, addedTitle, setAddedTitle, showModal, setShowModal,
+        { username, setUsername, addedImg, setAddedImg, addedTitle, setAddedTitle, showModal, setShowModal,
           addedComment, setAddedComment, currentDate, setCurrentDate, postId, setPostId, addedPost, setAddedPost, arrayPosts, setArrayPosts }
       }>
         <SwitchPage/>
@@ -29,4 +28,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

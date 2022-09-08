@@ -1,10 +1,13 @@
 import React, {useContext} from 'react';
-import { dateArray } from '../utils/constants';
-import { nCloneContext } from '../utils/context'
+import { allPosts, dateArray } from '../utils/constants';
+import { nCloneContext } from '../utils/context';
+import { useNavigate } from "react-router-dom";
 
 function AddLink() {
 
-    const {setPage, setAddedImg, addedImg, setAddedTitle, addedTitle, setCurrentDate, arrayPosts, username} = useContext(nCloneContext);
+    const {setAddedImg, addedImg, setAddedTitle, addedTitle, setCurrentDate, arrayPosts, username} = useContext(nCloneContext);
+
+    let navigate = useNavigate();
 
     return(
         <div className='container'>
@@ -45,7 +48,7 @@ function AddLink() {
                                 title: addedTitle,
                                 username: username
                             })
-                            setPage('allPosts');
+                            navigate(`/${allPosts}`);
                         }else{
                             alert('Please, write title and attach image');
                         }
@@ -53,7 +56,7 @@ function AddLink() {
                         Add
                     </button>
                     <button className='button buttonGray' data-cy='back-from-add-post' onClick={() => {
-                        confirm('Your data will not be saved. Are you sure?') ? setPage('allPosts') : '';
+                        confirm('Your data will not be saved. Are you sure?') ? navigate(`/${allPosts}`) : '';
                     }}>
                         Back
                     </button>

@@ -1,3 +1,6 @@
+export const allPosts = 'allPosts';
+export const addLink = 'addLink';
+export const currentPost = 'currentPost';
 export const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 export const dateFormat = () => {

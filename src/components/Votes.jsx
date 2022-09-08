@@ -9,11 +9,13 @@ const [votes, setVotes] = useState(0);
 
   return (
     <div className='col-1 d-flex flex-column justify-content-center align-items-center'>
-        <div className='cursor arrowUp' onClick={() => setVotes(votes === 0 ? count + 1 : votes + 1)}>
+        <div className='cursor arrowUp' data-cy='increase-vote' onClick={() => setVotes(votes === 0 ? count + 1 : votes + 1)}>
             <FontAwesomeIcon icon={faArrowUp}/>
         </div>
-        {votes === 0 ? count : votes}
-        <div className='cursor arrowDown' onClick={() => setVotes(votes === 0 ? count - 1 : votes - 1)}>
+        <div data-cy='votes'>
+          {votes === 0 ? count : votes}          
+        </div>
+        <div className='cursor arrowDown' data-cy='decrease-vote' onClick={() => setVotes(votes === 0 ? count - 1 : votes - 1)}>
             <FontAwesomeIcon icon={faArrowDown}/>
         </div>
     </div>

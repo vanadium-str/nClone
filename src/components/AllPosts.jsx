@@ -1,16 +1,19 @@
 import { useState, useContext, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import { nCloneContext } from '../utils/context';
 import Comments from './Comments';
 import AddCommentButton from './AddCommentButton';
 import Votes from './Votes';
 import ModalWindow from './ModalWindow';
-import { dateArray } from '../utils/constants';
+import { addLink, currentPost, dateArray } from '../utils/constants';
 
 function AllPosts() {
 
-    const {setPage, currentDate, setPostId, arrayPosts, setAddedImg, setAddedTitle, username, setArrayPosts} = useContext(nCloneContext);
+    const {currentDate, setPostId, arrayPosts, setAddedImg, setAddedTitle, username, setArrayPosts} = useContext(nCloneContext);
 
     const [showComments, setShowComments] = useState(-1);
+
+    let navigate = useNavigate();
 
     // useEffect(() => {
     //     fetch('https://my-json-server.typicode.com/vanadium-str/fakeJSON/data')
@@ -30,7 +33,7 @@ function AllPosts() {
                         nClone App
                     </p>
                     <button className='button' data-cy='button-add-link' onClick={() =>{
-                        setPage('addLink');
+                        navigate(`/${addLink}`);
                         setAddedImg('');
                         setAddedTitle('');
                         }}>
@@ -49,7 +52,7 @@ function AllPosts() {
                             <div className='col-10 mb-3'>
                                 <h4 className='m-0 cursor' data-cy='title-post' onClick={() => {
                                     setPostId(key);
-                                    setPage('currentPost');
+                                    navigate(`/${currentPost}`);
                                 }}>
                                     {item.title}
                                 </h4>

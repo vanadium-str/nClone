@@ -20,7 +20,11 @@ describe('Posts Page', () => {
   
   context('Renders all posts', () => {
     it('successfully load data', () => {
-      cy.request('GET', 'https://my-json-server.typicode.com/vanadium-str/fakeJSON/data')
+      cy.request('GET', 'https://my-json-server.typicode.com/vanadium-str/fakeJSON/data');
+    })
+
+    it('check route', () => {
+      cy.location('pathname').should('eq', '/allPosts');
     })
 
     it('renders logo and button Add link', () => {
@@ -35,15 +39,16 @@ describe('Posts Page', () => {
       cy.getByData('comments').first().click().getByData('comment-title');
     })
 
-    // it('close comments', () => {
-    //   cy.getByData('comments').first().click().getByData('comment-title').should('be.hide');
-    // })
   })
 
   context('Add post section', () => {
 
-    it('fill the form', () => {
+    it('check route', () => {
       cy.get("[data-cy='button-add-link']").contains('Add link').click();
+      cy.url().should('include', '/addLink');
+    })
+
+    it('fill the form', () => {
       cy.getByData('input-title').type('some title').should('have.value', 'some title');
       cy.fixture('image.jpg').then((fileContent) => {
         cy.getByData('input-img').attachFile({
@@ -65,7 +70,8 @@ describe('Posts Page', () => {
     })
 
     it('try to send only title', () => {
-      cy.getByData('input-title').type('some title').should('have.value', 'some title');
+      const typeText = 'some title'
+      cy.getByData('input-title').type(typeText).should('have.value', typeText);
       cy.getByData('add-post-button').click();
       cy.getByData('write-title').contains('Please, write a title of the post');
     })
@@ -92,8 +98,13 @@ describe('Posts Page', () => {
   })
 
   context('Current post Page', () => {
-    it('Open and close post', () => {
+
+    it('check route', () => {
       cy.getByData('title-post').first().click();
+      cy.location('pathname').should('eq', '/currentPost');
+    })
+
+    it('Open and close post', () => {
       cy.getByData('current-title-post');
       cy.getByData('back-from-current-title').click();
       cy.getByData('title-row').should('have.length', 6);
@@ -121,16 +132,17 @@ describe('Posts Page', () => {
       cy.getByData('title-row').should('have.length', 6);
       cy.getByData('comments').first().contains('1 comments');
       cy.getByData('comments').first().click();
-      cy.getByData('comment-username').first() // contains username
+    })
+  })
+
+  context('Count votes', () => {
+    it('Increase and decrease votes of post', () => {
+      cy.getByData('votes').first().contains('0');
+      cy.getByData('increase-vote').first().click();
+      cy.getByData('votes').first().contains('1');
+      cy.getByData('decrease-vote').first().click();
+      cy.getByData('votes').first().contains('0');
     })
   })
 
 })
-
-
-
-
-//     cy.url().should('include', '/commands/actions')
-// it.only('Course: Testing Your First Next.js Application', () => {
-//   cy.getByData('course-0').find('a').eq(3).click()
-//   cy.location('pathname').should('eq', '/testing-your-first-application')

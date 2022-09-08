@@ -1,13 +1,17 @@
 import React, {useContext} from 'react';
+import { useNavigate } from "react-router-dom";
 import { nCloneContext } from '../utils/context'
 import Comments from './Comments';
 import AddCommentButton from './AddCommentButton';
 import Votes from './Votes';
 import ModalWindow from './ModalWindow';
+import { allPosts } from '../utils/constants';
 
 function CurrentPost() {
 
-    const {setPage, addedPost, arrayPosts, currentDate, postId} = useContext(nCloneContext);
+    const {addedPost, arrayPosts, currentDate, postId} = useContext(nCloneContext);
+
+    let navigate = useNavigate();
 
     return(
         <div className='container my-2'>
@@ -16,7 +20,7 @@ function CurrentPost() {
                     <p className='logoSmall'>
                         nClone App
                     </p>
-                    <button className='button buttonGray' data-cy='back-from-current-title' onClick={() => setPage('allPosts')}>
+                    <button className='button buttonGray' data-cy='back-from-current-title' onClick={() => navigate(`/${allPosts}`)}>
                         Back
                     </button>
                 </div>

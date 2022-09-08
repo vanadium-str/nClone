@@ -1,8 +1,13 @@
 import { useContext } from 'react';
+import { useNavigate } from "react-router-dom";
+import { allPosts } from '../utils/constants';
 import { nCloneContext } from '../utils/context';
 
 function StartPage() {
-    const {setPage, username, setUsername} = useContext(nCloneContext);
+
+    const {username, setUsername} = useContext(nCloneContext);
+
+    let navigate = useNavigate();
 
   return (
     <div className='d-flex justify-content-center align-items-center flex-column'>
@@ -15,7 +20,7 @@ function StartPage() {
         <input className='inputUsername mb-4' placeholder='username' type='text'
               onChange={(e) => setUsername(e.target.value.trim())}/>
         <button className='button' onClick={() => {
-          username !== '' ? setPage('allPosts') : alert('Please, write your username')
+          username !== '' ? navigate(`/${allPosts}`) : alert('Please, write your username')
         }}>
           Sign In
         </button>
