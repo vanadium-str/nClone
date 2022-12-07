@@ -12,9 +12,9 @@ function Comments() {
     return(
         <div className='row'>
             <div className='col-12 row mb-3'>
-                {arrayPosts[postId].comments.map((item) => {
+                {arrayPosts[postId].comments.map((item, key) => {
                     return(
-                        <div className='mb-2 row'>
+                        <div className='mb-2 row' key={key}>
 
                             <Votes count={item.amountVotes}/>
 

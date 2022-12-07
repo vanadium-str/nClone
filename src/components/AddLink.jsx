@@ -41,12 +41,25 @@ function AddLink() {
                     <button className='button me-5' data-cy='add-post-button' onClick={() => {
                         if(addedTitle !== '' && addedImg !== ''){
                             setCurrentDate(dateArray(''));
-                            arrayPosts.unshift({
-                                amountVotes: 0,
-                                comments: [],
-                                image: addedImg,
-                                title: addedTitle,
-                                username: username
+                            // arrayPosts.unshift({
+                            //     amountVotes: 0,
+                            //     comments: [],
+                            //     image: addedImg,
+                            //     title: addedTitle,
+                            //     username: username
+                            // })
+                            fetch('/addPost',{
+                                method: 'POST',
+                                body: JSON.stringify({
+                                    amountVotes: 0,
+                                    comments: [],
+                                    image: addedImg,
+                                    title: addedTitle,
+                                    username: username
+                                }),
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
                             })
                             navigate(`/${allPosts}`);
                         }else{

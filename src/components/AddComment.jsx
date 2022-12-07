@@ -19,12 +19,25 @@ function AddComment() {
         <button className='button me-5' data-cy='add-comment-button' onClick={() => {
             if(addedComment !== ''){
               setCurrentDate(dateArray(''));
-              arrayPosts[postId].comments.unshift({
-                amountVotes: 0,
-                amountComments: 0,
-                comment: addedComment,
-                author: username
-            })
+            //   arrayPosts[postId].comments.unshift({
+            //     amountVotes: 0,
+            //     amountComments: 0,
+            //     comment: addedComment,
+            //     author: username
+            // })
+              fetch('/addComment',{
+                  method: 'POST',
+                  body: JSON.stringify({
+                      amountVotes: 0,
+                      amountComments: 0,
+                      comment: addedComment,
+                      author: username,
+                      postId: postId
+                  }),
+                  headers: {
+                      'Content-Type': 'application/json'
+                  }
+              })
               setShowModal(false);
             }else{
               alert('Please, write a comment');
