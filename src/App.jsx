@@ -14,7 +14,7 @@ function App() {
   const [currentDate, setCurrentDate] = useState('');
   const [postId, setPostId] = useState('');
   const [addedPost, setAddedPost] = useState(false);
-  const [arrayPosts, setArrayPosts] = useState(data);
+  const [arrayPosts, setArrayPosts] = useState([]);
 
   return (
     <div className=''>

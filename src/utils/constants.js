@@ -11,7 +11,6 @@ export const dateFormat = () => {
 }
 
 export const dateArray = (date) => {
-    console.log(date)
     if(!date){
         let date = new Date();
         let result = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;

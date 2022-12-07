@@ -9,21 +9,21 @@ import { addLink, currentPost, dateArray } from '../utils/constants';
 
 function AllPosts() {
 
-    const {currentDate, setPostId, arrayPosts, setAddedImg, setAddedTitle, username, setArrayPosts} = useContext(nCloneContext);
+    const {currentDate, setPostId, arrayPosts, setAddedImg, setAddedTitle, username, setArrayPosts, showModal} = useContext(nCloneContext);
 
     const [showComments, setShowComments] = useState(-1);
 
     let navigate = useNavigate();
 
-    // useEffect(() => {
-    //     fetch('https://my-json-server.typicode.com/vanadium-str/fakeJSON/data')
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             console.log(data)
-    //             setArrayPosts(data);
-    //         }
-    //     );
-    // }, []);
+    useEffect(() => {
+        fetch('/posts')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                setArrayPosts(data);
+            }
+        );
+    }, [showModal]);
 
     return (
         <div className='container my-2'>
@@ -43,7 +43,7 @@ function AllPosts() {
 
                 {arrayPosts.length ? arrayPosts.map((item, key) => {
                     return(
-                        <div className='row my-2' data-cy='title-row'>
+                        <div className='row my-2' data-cy='title-row' key={key}>
                             <Votes count={item.amountVotes}/>
 
                             <div className='col-1 d-flex justify-content-center align-items-center'>
